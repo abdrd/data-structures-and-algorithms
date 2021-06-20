@@ -61,7 +61,7 @@ class LinkedList:
                     return cur
                 
         return None     
-    # Cannot insert at the last index
+
     def insert_at(self, index: int, new_node: Node):
         cur = self.head
         idx = 0
