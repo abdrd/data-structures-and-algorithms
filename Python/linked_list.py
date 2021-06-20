@@ -102,7 +102,14 @@ class LinkedList:
                     cur.next = None
                 except:
                     prev_node.next = None
-            
+    
+    def update(self, index, new_value):
+        node_to_update = self.node_at(index)
+        
+        try:
+            node_to_update.value = new_value
+        except:
+            raise TypeError
 
 l = LinkedList()
 
@@ -173,3 +180,17 @@ print(l.value_at(6))
 print(l.value_at(7))
 
 print("LENGTH OF LIST: ", l.length())
+
+print(" <UPDATED SOME> ")
+
+l.update(0, "UPDATED_ TOP NODE")
+l.update(1, "UPDATED BLA BLA")
+l.update(l.length() - 1, "UPDATED LAST NODE")
+#l.update(8, "ERROR")
+
+print(l.value_at(0))
+print(l.value_at(1))
+print(l.value_at(2))
+print(l.value_at(3))
+print(l.value_at(4))
+print(l.value_at(5))
