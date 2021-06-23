@@ -1,3 +1,11 @@
+"""
+    Singly linked list data structure implementation in Python programming language
+    Learn about linked lists: 
+        https://www.geeksforgeeks.org/data-structures/linked-list/
+        https://en.wikipedia.org/wiki/Linked_list
+        https://www.softwaretestinghelp.com/linked-list/
+"""
+
 class Node:
     def __init__(self, value) -> None:
         self.value = value
