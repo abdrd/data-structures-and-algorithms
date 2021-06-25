@@ -1,5 +1,5 @@
 "use strict";
-var _a, _b, _c;
+var _a, _b, _c, _d, _e, _f;
 var NNode = /** @class */ (function () {
     function NNode(value) {
         this.value = value;
@@ -65,6 +65,7 @@ var LinkedList = /** @class */ (function () {
                     var prevNode = this.nodeAt(curIndex - 1);
                     prevNode.next = node;
                     node.next = cur;
+                    this.size++;
                 }
             }
         }
@@ -83,23 +84,24 @@ var LinkedList = /** @class */ (function () {
         }
         return null;
     };
+    // TODO fix delete method ~~ I don't feel so good today
     LinkedList.prototype.delete = function (index) {
-        var _a;
         if (index > this.size - 1)
             throw new Error("index out of range");
-        if (this.size > 0) {
-            // kinda bulky ?
-            var nodeBeforeNodeToDelete = this.nodeAt(index - 1);
-            if (nodeBeforeNodeToDelete === null || nodeBeforeNodeToDelete === void 0 ? void 0 : nodeBeforeNodeToDelete.next) {
-                var nodeToDelete = nodeBeforeNodeToDelete.next;
-                if ((_a = nodeBeforeNodeToDelete === null || nodeBeforeNodeToDelete === void 0 ? void 0 : nodeBeforeNodeToDelete.next) === null || _a === void 0 ? void 0 : _a.next) {
-                    nodeBeforeNodeToDelete.next = nodeToDelete.next;
-                    nodeToDelete.next = undefined;
-                }
-                else // this means, nodeToDelete doesn't have a next node {
-                    nodeBeforeNodeToDelete.next = undefined;
-            }
+        if (this.size === 0)
+            throw new Error("list is empty");
+        if (index === 0) {
+            this.pop();
+            return;
         }
+        var prevNode = this.nodeAt(index - 1);
+        var nodeToDelete = this.nodeAt(index);
+        if (nodeToDelete === null || nodeToDelete === void 0 ? void 0 : nodeToDelete.next) {
+            prevNode.next = nodeToDelete === null || nodeToDelete === void 0 ? void 0 : nodeToDelete.next;
+            nodeToDelete.next = undefined;
+        }
+        else
+            prevNode.next = undefined;
     };
     return LinkedList;
 }());
@@ -130,6 +132,16 @@ var n4 = new NNode("INSERT AT");
 //console.log(l.head?.value);
 l.insertAt(2, n4);
 //console.log(l.head!.next?.next?.value);
+/*
 l.delete(0);
-console.log((_a = l.head) === null || _a === void 0 ? void 0 : _a.value);
-console.log((_c = (_b = l.head) === null || _b === void 0 ? void 0 : _b.next) === null || _c === void 0 ? void 0 : _c.value);
+console.log(l.head?.value);
+console.log(l.head?.next?.value);
+*/
+/*
+l.delete(1);
+console.log(l.head?.value);
+console.log(l.head?.next?.value);
+*/
+l.delete(3);
+console.log((_c = (_b = (_a = l.head) === null || _a === void 0 ? void 0 : _a.next) === null || _b === void 0 ? void 0 : _b.next) === null || _c === void 0 ? void 0 : _c.value);
+console.log((_f = (_e = (_d = l.head) === null || _d === void 0 ? void 0 : _d.next) === null || _e === void 0 ? void 0 : _e.next) === null || _f === void 0 ? void 0 : _f.next);
