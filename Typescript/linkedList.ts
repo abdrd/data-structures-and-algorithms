@@ -5,7 +5,6 @@ class NNode<NodeValue> {
     next?: NNode<NodeValue>;
     constructor(value: NodeValue) {
         this.value = value;
-        this.value;
     }
 }
 
@@ -30,8 +29,10 @@ class LinkedList {
     }
 
     prepend(node: NNode<NodeValue>) {
-        if (this.size === 0) this.head = node;
-        else node.next = this.head;
+        if (this.size === 0) {
+            this.head = node;
+            return;
+        } else node.next = this.head;
         this.head = node;
         this.size++;
     }
