@@ -6,3 +6,8 @@
     border: 1px solid #000;
     background-color: antiquewhite;
 }
+
+img {
+    width: 250px;
+    height: 250px;
+}

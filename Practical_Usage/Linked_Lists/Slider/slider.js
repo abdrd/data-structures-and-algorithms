@@ -1,5 +1,3 @@
-// TODO not complete
-
 const DATA = [
     {
         img: "https://www.nawpic.com/media/2020/cute-cat-nawpic-7.jpg",
@@ -19,90 +17,89 @@ const DATA = [
     },
 ]
 
-// a node in the linked list
+const right = document.getElementById("right")
+const left = document.getElementById("left")
+const img = document.getElementById("img")
+const text = document.getElementById("text")
+
 class Card {
-    img
-    text
-    next
-    prev
     constructor(img, text) {
         this.img = img
         this.text = text
+        this.next = undefined
+        this.prev = undefined
     }
 }
 
-// list
 class Slider {
-    // Card (head)
-    head
-    // current card displayed
-    current
-    size
+    constructor() {
+        this.head = undefined
+        this.current = undefined
+        this.size = 0
+    }
+
+    // redraw dom
+    refresh() {
+        img.src = this.current.img
+        text.innerText = this.current.text
+    }
 
     append(card) {
         if (this.size === 0) {
             this.head = card
             this.current = this.head
-        }
-        if (this.size === 1) {
-            const head = this.head
-            head.next = card
+            this.size++
+        } else if (this.size === 1) {
+            this.head.next = card
             card.prev = this.head
-        }
-        if (this.size > 1) {
+            this.size++
+        } else {
             let cur = this.head
-
             while (cur.next) {
                 cur = cur.next
             }
-            cur.next = card
+
             card.prev = cur
+            cur.next = card
+
+            this.size++
         }
     }
 
     swipeToRight() {
-        if (size < 2) return
+        if (this.size < 2) return
         if (!this.current.next) return
         else {
             this.current = this.current.next
+            this.refresh()
         }
     }
-
     swipeToLeft() {
         if (this.size < 2) return
         if (!this.current.prev) return
         else {
             this.current = this.current.prev
+            this.refresh()
         }
     }
 }
 
-let slider = new Slider()
+const s = new Slider()
 
 const c1 = new Card(DATA[0].img, DATA[0].text)
 const c2 = new Card(DATA[1].img, DATA[1].text)
 const c3 = new Card(DATA[2].img, DATA[2].text)
 const c4 = new Card(DATA[3].img, DATA[3].text)
 
-slider.append(c1)
-slider.append(c2)
-slider.append(c3)
-slider.append(c4)
-
-// * DOM manipulation
-
-const imgTag = document.getElementById("img")
-const textP = document.getElementById("text")
-const right = document.getElementById("right")
-const left = document.getElementById("left")
+s.append(c1)
+s.append(c2)
+s.append(c3)
+s.append(c4)
 
 right.addEventListener("click", () => {
-    slider.swipeToRight()
+    s.swipeToRight()
 })
 
 left.addEventListener("click", () => {
-    slider.swipeToLeft()
+    s.swipeToLeft()
 })
-
-imgTag.src = slider.current.img
-textP.innerText = slider.current.text
