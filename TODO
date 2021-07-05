@@ -1,8 +1,8 @@
-Go\stack.go
+Exercises/Arrays/get_products_of_other_integers.py
+	TODO product array
+Go/stack.go
 	TODO implement stack in go
-Python\queue.py
-	TODO queue
-Typescript\dist\linkedList.js
+Typescript/dist/linkedList.js
 	TODO fix delete method ~~ I don't feel so good today
-Typescript\doublyLinkedList.ts
+Typescript/doublyLinkedList.ts
 	TODO implement doubly linked list in typescript
