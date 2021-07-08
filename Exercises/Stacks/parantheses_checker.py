@@ -24,12 +24,11 @@ def check_paren(paren_string: str) -> bool:
 
     s = Stack()
     balanced = True
-    index = 0
     
     # go over the entire string
-    while index < len(paren_string):
+    for i in range(len(paren_string)):
         # get the current char
-        symbol = paren_string[index]
+        symbol = paren_string[i]
         # store opening parens
         if symbol == "(":
             s.push(symbol)
@@ -44,9 +43,6 @@ def check_paren(paren_string: str) -> bool:
             # we pop that opening paren because we matched it with our closing paren.
             else:
                 s.pop()
-        # increment the index.
-        # go to the next char.
-        index += 1
     
     return balanced and s.is_empty()
 
