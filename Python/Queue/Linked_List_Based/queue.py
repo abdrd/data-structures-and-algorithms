@@ -35,6 +35,7 @@ class Queue:
     def size(self) -> int:
         return self.size
     
+    # ** O(1)
     # * we could've used a expected a value instead of a Node
     def enqueue(self, node: Node):
         if self.size == 0:
@@ -48,6 +49,7 @@ class Queue:
             rear.next = node
         self.size += 1
     
+    # ** O(1)
     def dequeue(self):
         if self.size == 0:
             raise Exception("queue is empty")
