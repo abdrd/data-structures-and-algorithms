@@ -1,9 +1,9 @@
 class StackIsEmptyException(Exception):
     pass
 
-# TOP
-#  |
-#  v
+#          TOP
+#           |
+#           v
 # [1, 2, 3, 4]
 
 class Stack:
@@ -17,18 +17,18 @@ class Stack:
     def peek(self):
         if self.__size == 0:
             raise StackIsEmptyException
-        to_return = self.__items[0]
+        to_return = self.__items[-1]
         return to_return
     
     def push(self, value):
-        self.__items.insert(0, value)
+        self.__items.append(value)
         self.__size += 1
     
     def pop(self):
         if self.__size == 0:
             raise StackIsEmptyException
-        to_pop = self.__items[0]
-        self.__items.pop(0) # O(k) https://www.google.com/search?q=python+pop+time+complexity&oq=python+pop+time+&aqs=chrome.1.69i57j0i19j0i19i22i30l8.5523j0j7&sourceid=chrome&ie=UTF-8
+        to_pop = self.__items[-1]
+        self.__items.pop() # O(k) https://www.google.com/search?q=python+pop+time+complexity&oq=python+pop+time+&aqs=chrome.1.69i57j0i19j0i19i22i30l8.5523j0j7&sourceid=chrome&ie=UTF-8
         self.__size -= 1
         return to_pop
     

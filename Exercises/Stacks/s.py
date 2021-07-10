@@ -1,6 +1,13 @@
 class StackIsEmptyException(Exception):
     pass
 
+"""
+                      TOP  
+                       |
+                       v 
+    [  [w]  [z]  [y]  [x]  ]
+"""
+
 class Stack:
     def __init__(self) -> None:
         self.__items = []
@@ -12,7 +19,7 @@ class Stack:
     def peek(self):
         if self.__size == 0:
             raise StackIsEmptyException
-        to_return = self.__items[0]
+        to_return = self.__items[-1]
         return to_return
     
     def push(self, value):
@@ -22,7 +29,7 @@ class Stack:
     def pop(self):
         if self.__size == 0:
             raise StackIsEmptyException
-        to_pop = self.__items[0]
+        to_pop = self.__items[-1]
         self.__items.pop()
         self.__size -= 1
         return to_pop
@@ -32,3 +39,6 @@ class Stack:
     
     def is_empty(self):
         return self.__size == 0
+    
+    def items(self):
+        return self.__items
