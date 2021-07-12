@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Singly linked list</title>
+        <style>
+            .node {
+                background-color: rgb(153, 153, 224);
+                padding: 30px;
+                color: #fff;
+                width: 3%;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                margin: 3px;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Singly linked lists</h1>
+        <div class="Container">
+            <div class="Functions">
+                <button id="size">Get size</button>
+                <div id="append-div">
+                    <input
+                        type="text"
+                        id="append-text"
+                        placeholder="value of the node to append"
+                    />
+                    <button id="append">Append</button>
+                </div>
+            </div>
+            <div class="Visuals">
+                <p class="SizeInfo"></p>
+                <div class="ListRepr"></div>
+            </div>
+        </div>
+
+        <script type="module">
+            // ! the actual node and the DOM node (<div class="node"></div>) are not coupled.
+            // ! this is partly bad.
+            // I am bored.
+
+            import { Node, LinkedList } from "./sll.js"
+
+            let list = new LinkedList()
+
+            /** DOM */
+
+            /** VISUALS */
+            const VISUALSDIV = document.querySelector(".Visuals")
+            const SIZEINFO = document.querySelector(".SizeInfo")
+            const LISTREPR = document.querySelector(".ListRepr")
+
+            /** FUNCTIONS */
+            const getSizeBtn = document.getElementById("size")
+            const appendBtn = document.getElementById("append")
+
+            /** SHAPES */
+            const NODE = value => `<div class="node">${value}</div>`
+
+            /** EVENT LISTENERS */
+            getSizeBtn.addEventListener("click", () => {
+                SIZEINFO.innerText = `Size of the list: ${list.size}`
+            })
+            appendBtn.addEventListener("click", e => {
+                let value =
+                    document.getElementById("append-text").value.slice(0, 10) ||
+                    "DEFAULT_VALUE"
+                if (list.size === 0) {
+                    value += "\n(HEAD)"
+                }
+                LISTREPR.innerHTML += NODE(value)
+                list.append(value)
+                getSizeBtn.click()
+            })
+        </script>
+    </body>
+</html>
