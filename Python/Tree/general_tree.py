@@ -74,4 +74,19 @@ package_json = Tree("package.json")
 src_directory.add_child(gitignore)
 src_directory.add_child(package_json)
 
-src_directory.draw()
+src_directory.draw() # v
+"""
+src/
+  |__ components/       
+    |__ Auth/
+      |__ Login/        
+        |__ Login.tsx   
+      |__ Register/     
+        |__ Register.tsx
+    |__ Home/
+      |__ Home.tsx      
+      |__ Navbar/       
+        |__ Navbar.tsx  
+  |__ .gitignore        
+  |__ package.json
+"""
