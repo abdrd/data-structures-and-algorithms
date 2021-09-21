@@ -13,7 +13,7 @@ const DATA = [
     },
     {
         img: "https://cdn.mos.cms.futurecdn.net/6h8C6ygTdR2jyyUxkALwsc-1200-80.jpg",
-        text: "A cute ass (donkey)",
+        text: "A donkey",
     },
 ]
 
